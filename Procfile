@@ -1,1 +1,1 @@
-web: java -war target/Booking-0.0.1-SNAPSHOT.war
+web: java -jar target/ShoppingCartSpringBoot-0.0.1-SNAPSHOT.jar
