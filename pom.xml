@@ -12,7 +12,7 @@
 	<groupId>me.toanlnb</groupId>
 	<artifactId>ShoppingCartSpringBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>Booking</name>
 	<description>Booking</description>
 
