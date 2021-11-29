@@ -1,1 +1,1 @@
-web: java -jar target/Booking-0.0.1-SNAPSHOT.jar
+web: java -war target/Booking-0.0.1-SNAPSHOT.war
