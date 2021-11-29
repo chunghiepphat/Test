@@ -1,0 +1,158 @@
+/* FOR TICKET LISTING PAGE */
+aside {
+	float: left;
+	width: 30%;
+	height: 100%;
+	background-color: #c3e3c5;
+	height: 100%;
+}
+
+.form-booking {
+	float: left;
+	padding: 50px;
+	width: 70%;
+	min-width: 400px;
+	overflow: hidden;
+}
+
+.form-booking button {
+	margin: 5px 0;
+}
+
+/* BUS MODEL & ELEMENTS */
+.bus-model {
+	float: none;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding: 40px 10px;
+	width: 300px;
+	border-left-style: solid;
+	border-right-style: solid;
+	border-color: black;
+	border-width: 1px;
+}
+
+.bus-model * {
+	float: left;
+}
+
+.bus-door {
+	width: 50%;
+}
+
+.bus-door label {
+	display: block;
+	margin: 0;
+	width: 100%;
+	border-right-style: solid;
+	border-color: black;
+	border-width: 2px;
+	text-align: right;
+}
+
+.bus-seat * {
+	width: 100%;
+	text-align: center;
+}
+
+.bus-seat input[type="checkbox"] {
+	display: none;
+}
+
+.bus-seat label {
+	display: block;
+	margin: 0;
+	border-bottom-style: solid;
+	border-color: black;
+	border-width: 2px;
+}
+
+.bus-seat span {
+	display: inline;
+	width: auto;
+}
+
+.bus-driver {
+	padding: 0 0 20px 0;
+	width: 100%;
+}
+
+.bus-driver .bus-seat {
+	width: 50%;
+}
+
+.bus-driver .bus-seat label {
+	background-color: #cfcfcf;
+}
+
+.bus-cabin .bus-seat {
+	width: 25%;
+	padding: 5px;
+}
+
+.bus-cabin .bus-seat label {
+	cursor: pointer;
+	background-color: #c3e3c5;
+}
+
+.seat-available:checked+label {
+	background: rgba(173, 164, 78, 0.9);
+	transition: 0.3s;
+}
+
+.seat-unavailable:checked+label {
+	background: rgba(173, 78, 78, 0.9);
+}
+
+.bus-legend {
+	float: left;
+	width: 200px;
+}
+.bus-legend div {
+	margin: 5px 0;
+	padding: 10px;
+	width: 100%;
+}
+/* BUS DETAILS PANEL */
+.bus-details {
+	position: sticky;
+	top: 100px;
+	right: 0px;
+	padding: 40px;
+	width: 100%;
+}
+
+.bus-details h1 {
+	padding: 5px 0;
+	font-size: 22px;
+	font-weight: normal;
+	border-bottom-style: solid;
+	border-color: black;
+	border-width: 1px;
+}
+
+.bus-details div {
+	padding: 5px 0;
+	width: 100%;
+}
+
+.bus-details span {
+	display: inline-block;
+	float: left;
+	height: 40px;
+}
+
+.bus-details input {
+	width: 70%;
+	border-style: none;
+	border-bottom-style: solid;
+	border-color: black;
+	border-width: 1px;
+	background: none;
+}
+
+.bus-details button {
+	width: 70%;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>SELLER'S DASHBOARD</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/utils.css" />
+<link rel="stylesheet" href="/css/seller.css" />
+<link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+<body>
+	<!-- WRAPPER -->
+	<div class="wrapper">
+		<!-- PAGE HEADER -->
+		<header>
+			<th:block th:include="/common/_header-seller"></th:block>
+		</header>
+		<!-- PAGE NAVIGATION -->
+		<nav>
+			<th:block th:include="/common/_nav-seller"></th:block>
+		</nav>
+		<!-- PAGE CONTAINER -->
+		<div class="page-container parallax">
+			<!-- PAGE HEADER -->
+			<section class="page-banner">
+				<div class="page-header">
+					<h1>SELLER DASHBOARD</h1>
+				</div>
+			</section>
+			<!-- PAGE CONTENT -->
+			<section class="page-content">
+				<div class="form-search">
+					<form th:action="@{/view-trips}" method="GET">
+						<!-- DEPARTURE -->
+						<select th:name="cityFrom" required>
+							<option th:text="${fromCity}" th:value="${fromCity}"
+								th:each="fromCity : ${fromCities}"
+								th:selected="${fromCity} == ${cityFrom}"></option>
+						</select>
+						<!-- DESTINATION -->
+						<select th:name="cityTo" required>
+							<option th:text="${toCity}" th:value="${toCity}"
+								th:each="toCity : ${toCities}"
+								th:selected="${toCity} == ${cityTo}"></option>
+						</select>
+						<!-- DATE -->
+						<input required th:name="date" th:value="${date}"
+							th:max="2029-12-31" type="date" />
+						<!-- SUBMIT -->
+						<button type="submit">VIEW TRIPS</button>
+					</form>
+				</div>
+				<!-- TRIP LISTINGS -->
+				<table th:if="${not #lists.isEmpty(busList)}" class="form-result">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Bus Name</th>
+							<th scope="col">City From</th>
+							<th scope="col">City To</th>
+							<th scope="col">View</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="bus : ${busList}">
+							<td th:text="${bus.id}"></td>
+							<td th:text="${bus.busName}"></td>
+							<td th:text="${cityFrom}"></td>
+							<td th:text="${cityTo}"></td>
+							<td>
+								<a
+									th:href="@{/view-tickets/{id}/{date}(id= ${bus.id}, date=${date})}">View
+									Tickets</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table th:if="${#lists.isEmpty(busList)}">
+					<tr>
+						<td>
+							<h1>It's empty around here...</h1>
+						</td>
+					</tr>
+				</table>
+			</section>
+		</div>
+		<!-- PAGE ALERTS -->
+		<div class="page-alert"></div>
+		<!-- PAGE FOOTER -->
+		<footer>
+			<th:block th:include="/common/_footer"></th:block>
+		</footer>
+	</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Welcome!</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/utils.css" />
+<link rel="stylesheet" href="/css/index.css" />
+</head>
+<body>
+	<!-- WRAPPER -->
+	<div class="wrapper">
+		<!-- PAGE HEADER -->
+		<header>
+			<th:block th:include="/common/_header-user"></th:block>
+		</header>
+		<!-- PAGE NAVIGATION -->
+		<nav>
+			<th:block th:include="/common/_nav-user"></th:block>
+		</nav>
+		<!-- PAGE CONTAINER -->
+		<div class="page-container parallax">
+			<!-- PAGE BANNER -->
+			<section class="page-banner">
+				<div class="page-header">
+					<h1>A JOURNEY TO YOUR HOPE AND DREAMS</h1>
+					<p>Book the ride back to your school today!</p>
+					<!-- BOOKING FORM -->
+					<div class="form-search">
+						<div role="alert" th:if="${freeSeats == 0}">Unavailable</div>
+						<form method="GET" th:action="@{/find-trips}">
+							<!-- DEPARTURE -->
+							<select required th:name="cityFrom">
+								<option selected>Choose departure...</option>
+								<option th:each="fromCity : ${fromCities}" th:text="${fromCity}"
+									th:value="${fromCity}"></option>
+							</select>
+							<!-- DESTINATION -->
+							<select required th:name="cityTo">
+								<option selected>Choose destination...</option>
+								<option th:each="toCity : ${toCities}" th:text="${toCity}"
+									th:value="${toCity}"></option>
+							</select>
+							<!-- DATE -->
+							<input required th:name="date" th:min="${currentDate}"
+								th:max="2029-12-31" th:value="${currentDate}" type="date" />
+							<!-- SUBMIT -->
+							<button type="submit">FIND TRIPS</button>
+						</form>
+					</div>
+				</div>
+			</section>
+			<!-- PAGE CONTENT -->
+			<section></section>
+		</div>
+		<!-- PAGE ALERTS -->
+		<div class="page-alert"></div>
+		<!-- PAGE FOOTER -->
+		<footer>
+			<th:block th:include="/common/_footer"></th:block>
+		</footer>
+	</div>
+</body>
+</html>

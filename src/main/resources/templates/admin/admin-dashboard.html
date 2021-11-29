@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ADMIN DASHBOARD</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/utils.css" />
+<link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+	<!-- WRAPPER -->
+	<div class="wrapper">
+		<!-- PAGE HEADER -->
+		<header>
+			<th:block th:include="/common/_header-admin"></th:block>
+		</header>
+		<!-- SIDEBAR AND CONTENT WRAPPER -->
+		<div class="page-wrapper">
+			<!-- PAGE NAVIGATION -->
+			<nav>
+				<th:block th:include="/common/_nav-admin"></th:block>
+			</nav>
+			<!-- PAGE CONTAINER -->
+			<div class="page-container">
+				<!-- PAGE HEADER -->
+				<section class="page-header">
+					<h1>GETTING STARTED...</h1>
+				</section>
+				<!-- PAGE CONTENT -->
+				<section class="page-content">
+					<ul>
+						<li>
+							<a th:href="@{/manage-users}">Search, filter and edit
+								existing users</a>
+						</li>
+						<li>
+							<a th:href="@{/create-users}">Create and authorize new users</a>
+						</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+		<!-- PAGE FOOTER -->
+		<footer> </footer>
+	</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ADMIN DASHBOARD</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/utils.css" />
+<link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+	<!-- WRAPPER -->
+	<div class="wrapper">
+		<!-- PAGE HEADER -->
+		<header>
+			<th:block th:include="/common/_header-admin"></th:block>
+		</header>
+		<!-- SIDEBAR AND CONTENT WRAPPER -->
+		<div class="page-wrapper">
+			<!-- PAGE NAVIGATION -->
+			<nav>
+				<th:block th:include="/common/_nav-admin"></th:block>
+			</nav>
+			<!-- PAGE CONTAINER -->
+			<div class="page-container">
+				<!-- PAGE HEADER -->
+				<section class="page-header">
+					<h1>CREATE ACCOUNTS...</h1>
+				</section>
+				<!-- PAGE CONTENT -->
+				<section class="page-content">
+					<form role="form" method="POST" th:action="@{/create-new-user}"
+						th:object="${user}">
+						<!-- ACCOUNT CREATION FORM -->
+						<table class="form-table">
+							<tr>
+								<td class="text-align-left">First name:</td>
+								<td>
+									<input type="text" th:field="*{firstname}" id="firstname"
+										placeholder="First name" required autofocus>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-align-left">Last name:</td>
+								<td>
+									<input type="text" th:field="*{lastname}" id="lastname"
+										placeholder="Last name" required>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-align-left">Email:</td>
+								<td>
+									<input type="email" th:field="*{email}" id="email"
+										placeholder="Email address" required>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-align-left">Password:</td>
+								<td>
+									<input type="password" th:field="*{password}" id="password"
+										placeholder="Password" required>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-align-left">Role:</td>
+								<td>
+									<input id="customer" type="radio" value="customer"
+										th:name="roleRadioNew" checked>
+									<label class="width-50pc" for="customer"> Customer </label>
+									<input id="seller" type="radio" value="seller"
+										th:name="roleRadioNew">
+									<label class="width-50pc" for="seller"> Seller </label>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<button class="width-100pc" type="submit">CREATE
+										ACCOUNT</button>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</section>
+			</div>
+		</div>
+		<!-- PAGE ALERTS -->
+		<div class="page-alert">
+			<div class="page-alert-msg" role="alert" th:if="${msg}"
+				th:utext="${msg}"></div>
+			<div class="page-alert-err" role="alert" th:if="${err}"
+				th:utext="${err}"></div>
+		</div>
+		<!-- PAGE FOOTER -->
+		<footer> </footer>
+	</div>
+</body>
+</html>

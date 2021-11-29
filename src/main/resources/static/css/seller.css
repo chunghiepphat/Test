@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+/* PARALLAX BACKGROUND */
+.parallax {
+	background-image: url("img/banner-seller.jpg");
+}
+
+.form-search {
+	background: rgba(131, 135, 132, 0.5);
+}

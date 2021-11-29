@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ADMIN DASHBOARD</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/utils.css" />
+<link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+	<!-- WRAPPER -->
+	<div class="wrapper">
+		<!-- PAGE HEADER -->
+		<header>
+			<th:block th:include="/common/_header-admin"></th:block>
+		</header>
+		<!-- SIDEBAR AND CONTENT WRAPPER -->
+		<div class="page-wrapper">
+			<!-- PAGE NAVIGATION -->
+			<nav>
+				<th:block th:include="/common/_nav-admin"></th:block>
+			</nav>
+			<!-- PAGE CONTAINER -->
+			<div class="page-container">
+				<!-- HEADER -->
+				<section class="page-header">
+					<h1>MANAGE ACCOUNTS...</h1>
+				</section>
+				<!-- CONTENT -->
+				<section class="page-content">
+					<!-- SEARCH FORM -->
+					<form th:action="@{/search-users}">
+						<div class="form-search">
+							<!-- KEYWORD INPUT -->
+							<input type="text" name="keyword" id="keyword"
+								th:value="${keyword}" placeholder="Enter keywords...">
+							<!-- ROLE DROP-DOWN -->
+							<select name="cbxRole">
+								<option th:each="roleName : ${roleNames}" th:text="${roleName}"
+									th:value="${roleName}"
+									th:selected="${roleName} == ${selectedRole}"></option>
+							</select>
+							<!-- SUBMIT -->
+							<button type="submit">SEARCH</button>
+						</div>
+					</form>
+					<!-- RESULT TABLE -->
+					<table th:if="${not #lists.isEmpty(listUser)}" class="form-result">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Email</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Role</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="User : ${listUser}">
+								<td th:text="${User.id}">ID</td>
+								<td th:text="${User.email}">Email</td>
+								<td th:text="${User.firstname}">First Name</td>
+								<td th:text="${User.lastname}">Last Name</td>
+								<td th:text="${roleNamesList.get(User.id)}"></td>
+								<td>
+									<a href="#" th:if="${roleNamesList.get(User.id)!= 'admin'}"
+										th:href="@{/edit-user-details/{id}/(id=${User.id})}">Edit</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table th:if="${#lists.isEmpty(listUser)}">
+						<tr>
+							<td>
+								<h1>It's lonely here... Try searching for something.</h1>
+							</td>
+						</tr>
+					</table>
+				</section>
+			</div>
+		</div>
+		<!-- PAGE FOOTER -->
+		<footer> </footer>
+	</div>
+</body>
+</html>

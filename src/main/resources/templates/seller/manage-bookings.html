@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ALL BOOKED TICKETS</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/utils.css" />
+<link rel="stylesheet" href="/css/seller.css" />
+<link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+<body>
+	<!-- WRAPPER -->
+	<div class="wrapper">
+		<!-- PAGE HEADER -->
+		<header>
+			<th:block th:include="/common/_header-seller"></th:block>
+		</header>
+		<!-- PAGE NAVIGATION -->
+		<nav>
+			<th:block th:include="/common/_nav-seller"></th:block>
+		</nav>
+		<!-- PAGE CONTAINER -->
+		<div class="page-container parallax">
+			<!-- HEADER -->
+			<section class="page-banner">
+				<div class="page-header">
+					<h1>ALL TICKETS BOOKED BY USERS</h1>
+				</div>
+			</section>
+			<!-- PAGE CONTENT -->
+			<section class="page-content">
+				<table>
+					<thead>
+						<tr>
+							<th>User Name</th>
+							<th>Bus Name</th>
+							<th>From</th>
+							<th>To</th>
+							<th>Date</th>
+							<th>Price</th>
+							<th>Seat</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="detail : ${details}">
+							<form th:action="@{'/remove-booking'}" method="POST">
+								<td th:text="${detail.getBill().getUser().getEmail()}"></td>
+								<td th:text="${detail.getTicket().getBus().getBusName()}"></td>
+								<td
+									th:text="${detail.getTicket().getBus().getRoute().getStart().locationName}"></td>
+								<td
+									th:text="${detail.getTicket().getBus().getRoute().getDestination().locationName}"></td>
+								<td th:text="${detail.getTicket().getDate()}"></td>
+								<td th:text="${detail.getTicket().getPrice()}"></td>
+								<td th:text="${detail.getTicket().getSeatNumber()}"></td>
+								<td>
+									<input type="checkbox" th:name="DetailId" th:value="${detail.getId()}">
+								</td>
+						</tr>
+						<button type="submit" class="btn btn-success">Remove</button>
+						</form>
+					</tbody>
+					<table th:if="${#lists.isEmpty(details)}">
+						<tr>
+							<td>
+								<h1>It's empty around here...</h1>
+							</td>
+						</tr>
+					</table>
+				</table>
+			</section>
+		</div>
+		<!-- PAGE ALERTS -->
+
+
+		<!-- PAGE FOOTER -->
+		<footer>
+			<th:block th:include="/common/_footer"></th:block>
+		</footer>
+	</div>
+</body>
+</html>

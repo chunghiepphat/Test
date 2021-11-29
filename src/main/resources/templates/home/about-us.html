@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Find your trips</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/utils.css" />
+<link rel="stylesheet" href="/css/about.css" />
+</head>
+<body>
+	<!-- WRAPPER -->
+	<div class="wrapper">
+		<!-- PAGE HEADER -->
+		<header>
+			<th:block th:include="/common/_header-user"></th:block>
+		</header>
+		<!-- PAGE NAVIGATION -->
+		<nav>
+			<th:block th:include="/common/_nav-user"></th:block>
+		</nav>
+		<!-- PAGE CONTAINER -->
+		<div class="page-container parallax">
+			<!-- HEADER -->
+			<section class="page-banner">
+				<div class="page-header">
+					<h1>ABOUT US</h1>
+				</div>
+			</section>
+			<!-- CONTENT -->
+			<section class="page-content">
+				<div class="info-card">
+					<h1>Nguyễn Hữu Tính</h1>
+					<p>Back-end programmer and database designer. Full-stack
+						overlord.</p>
+					<p>
+						<a href="https://www.facebook.com/sword.fish.151/">Contact</a>
+					</p>
+				</div>
+				<div class="info-card">
+					<h1>Lê Nguyễn Bảo Toàn</h1>
+					<p>Back-end programmer and front-end designer. The guy who made
+						this.</p>
+					<p>
+						<a href="https://www.facebook.com/toanl33/">Contact</a>
+					</p>
+				</div>
+				<div class="info-card">
+					<h1>Nguyễn Trịnh Đức Duy</h1>
+					<p>Back-end programmer.</p>
+					<p>
+						<a href="https://www.facebook.com/duyntd130161">Contact</a>
+					</p>
+				</div>
+				<div class="info-card">
+					<h1>Chung Hiệp Phát</h1>
+					<p>Back-end programmer and tester. Professional gamer.</p>
+					<p>
+						<a href="https://www.facebook.com/phat.chung.1998/">Contact</a>
+					</p>
+				</div>
+			</section>
+		</div>
+		<!-- PAGE ALERTS -->
+		<div class="page-alert"></div>
+		<!-- PAGE FOOTER -->
+		<footer>
+			<th:block th:include="/common/_footer"></th:block>
+		</footer>
+	</div>
+</body>
+</html>

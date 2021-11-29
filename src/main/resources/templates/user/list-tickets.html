@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Find your seats</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/utils.css" />
+<link rel="stylesheet" href="/css/user.css" />
+<link rel="stylesheet" href="/css/seats.css" />
+</head>
+<body>
+	<!-- WRAPPER -->
+	<div class="wrapper">
+		<!-- PAGE HEADER -->
+		<header>
+			<th:block th:include="/common/_header-user"></th:block>
+		</header>
+		<!-- PAGE NAVIGATION -->
+		<nav>
+			<th:block th:include="/common/_nav-user"></th:block>
+		</nav>
+		<!-- PAGE CONTAINER -->
+		<div class="page-container parallax">
+			<!-- PAGE HEADER -->
+			<section class="page-banner">
+				<div class="page-header">
+					<h1>SELECT YOUR SEATS</h1>
+				</div>
+			</section>
+			<!-- PAGE CONTENT -->
+			<section class="page-content">
+				<form
+					th:action="@{/book-tickets/{id}/{date}(id= ${bus.getId()}, date=${date})}"
+					onsubmit="return confirm('Book these selected seats?');">
+					<!-- BOOKING FORM -->
+					<div class="form-booking">
+						<!-- LEGENDS & EXPLANATIONS -->
+						<div class="bus-legend">
+							<div style="background-color: #c3e3c5">Available</div>
+							<div style="background: rgba(173, 78, 78, 0.9)">Unavailable</div>
+							<div style="background: rgba(173, 164, 78, 0.9)">Selected</div>
+						</div>
+						<!-- BUS MODEL & SEAT MAP -->
+						<div class="bus-model">
+							<div class="bus-driver">
+								<div class="bus-seat">
+									<label>Bus Driver</label>
+								</div>
+								<div class="bus-door">
+									<label>&#8592; Door</label>
+								</div>
+							</div>
+							<div class="bus-cabin">
+								<div class="bus-seat" th:each="ticket:${listSeat}">
+									<!-- SEAT CHECKBOX -->
+									<input th:id="${ticket.key}" class="seat-available"
+										th:if="${ticket.value}" type="checkbox" name="checkTicket"
+										th:value="${ticket.key}">
+									<input th:id="${ticket.key}" class="seat-unavailable"
+										th:unless="${ticket.value}" type="checkbox" checked="checked"
+										disabled>
+									<label th:text="${ticket.key}" th:for="${ticket.key}">
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- BUS DETAILS -->
+					<aside>
+						<div class="bus-details">
+							<h1 th:text="${bus.busName}"></h1>
+							<!-- PRICE -->
+							<div>Ticket price:</div>
+							<div>
+								<input th:value="${bus.getPrice()}" disabled />
+							</div>
+							<!-- DATE -->
+							<div>Date of departure:</div>
+							<div>
+								<input th:value="${date}" disabled />
+							</div>
+							<!-- DEPARTURE -->
+							<div>From:</div>
+							<div>
+								<input th:value="${bus.getRoute().getStart().getLocationName()}"
+									disabled />
+							</div>
+							<!-- DESTINATION -->
+							<div>To:</div>
+							<div>
+								<input
+									th:value="${bus.getRoute().getDestination().getLocationName()}"
+									disabled />
+							</div>
+							<div>
+								<button type="submit">Buy tickets</button>
+							</div>
+						</div>
+						<div style="height: 1000px"></div>
+					</aside>
+				</form>
+			</section>
+		</div>
+		<!-- PAGE ALERTS -->
+		<div class="page-alert">
+			<div class="page-alert-err" th:if="${error}" th:text="${error}"></div>
+		</div>
+		<!-- PAGE FOOTER -->
+		<footer>
+			<th:block th:include="/common/_footer"></th:block>
+		</footer>
+	</div>
+</body>
+</html>

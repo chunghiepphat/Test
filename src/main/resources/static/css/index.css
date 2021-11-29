@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+/* PARALLAX BACKGROUND */
+.parallax {
+	background-image: url("img/banner-index.jpg");
+}
+
+/* BANNER OVERRIDE */
+.page-banner {
+	padding: 100px 10%;
+	min-height: 90vh;
+}
+
+.page-header {
+	padding: 80px;
+	background: linear-gradient(90deg, rgba(195, 227, 197, 0) 0%,
+		rgba(195, 227, 197, 0.3) 50%, rgba(195, 227, 197, 0) 100%);
+	transition: 1s;
+}

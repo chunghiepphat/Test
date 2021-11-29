@@ -1,0 +1,222 @@
+/* FOR ADMIN PAGES */
+@charset "UTF-8";
+
+::placeholder {
+	color: #c9c9c9;
+	opacity: 1;
+}
+
+a {
+	color: white;
+}
+
+select, input[type=text], input[type=password], input[type=email] {
+	color: white;
+	border-style: none;
+	border-bottom-style: solid;
+	border-color: white;
+	border-width: 1px;
+	background: none;
+	transition: 0.3s;
+}
+
+option {
+	background-color: rgba(131, 135, 132, 0.9);
+}
+
+select:focus, input[type=text]:focus, input[type=password]:focus, input[type=email]:focus
+	{
+	background: rgba(255, 255, 255, 0.2);
+}
+
+input[type=text]:read-only, input[type=password]:read-only, input[type=email]:read-only
+	{
+	border-style: none;
+}
+
+table {
+	float: left;
+}
+
+.page-wrapper {
+	display: table;
+	width: 100%;
+	min-height: 100vh;
+	overflow: hidden;
+}
+
+/* MODIFY NAVIGATION BAR */
+nav {
+	display: table-cell;
+	float: none;
+	position: fixed;
+	top: 50px;
+	left: 0;
+	margin: 0;
+	width: 50px;
+	height: 100%;
+	overflow: hidden;
+}
+
+nav:hover {
+	width: 200px;
+	transition: 0.3s;
+}
+
+nav h1 {
+	display: block;
+	padding: 10px 20px;
+	height: 50px;
+	width: 100%;
+	color: white;
+	border-bottom-style: solid;
+	border-color: white;
+	border-width: 1px;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+nav li {
+	display: block;
+	height: 100%;
+}
+
+nav li a {
+	display: block;
+	padding: 10px 20px;
+	color: white;
+	text-decoration: none;
+}
+
+.nav-hamburger {
+	width: 100%;
+}
+
+.nav-hamburger h1 {
+	padding: 10px;
+}
+
+.nav-hamburger span {
+	display: block;
+	margin: 5px 0;
+	width: 30px;
+	height: 2px;
+	background-color: white;
+}
+
+.nav-content {
+	display: none;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+nav:hover .nav-hamburger {
+	display: none;
+}
+
+nav:hover .nav-content {
+	display: block;
+	transition: 0.3s;
+}
+
+/* PAGE CONTAINERS & ELEMENTS OVERRIDE */
+.page-container { /* PAGE BODY */
+	display: table-cell;
+	float: none;
+	height: 100%;
+	min-height: 0;
+	color: white;
+	background-color: #595959;
+}
+
+.page-header { /* BODY HEADER */
+	float: none;
+	margin: auto;
+	padding: 30px;
+	width: 80%;
+	border-bottom-style: solid;
+	border-color: white;
+	border-width: 1px;
+}
+
+.page-header h1 {
+	text-align: left;
+	text-shadow: none;
+}
+
+.page-content { /* BODY CONTENT CONTAINER */
+	float: none;
+	margin: auto;
+	width: 80%;
+	background: none;
+	border-style: none;
+	text-align: left;
+}
+
+.page-content ul {
+	display: block;
+	height: 100%;
+}
+
+.page-content li {
+	display: block;
+	height: 100%;
+	vertical-align: middle;
+}
+
+.page-content li:hover {
+	background-color: #c3e3c5;
+	transition: 0.3s;
+}
+
+.page-content li a {
+	display: block;
+	padding: 12px 50px;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+.page-content li:hover a {
+	color: black;
+}
+
+.page-links { /* RELEVANT NAVIGATION LINKS CONTAINER */
+	float: left;
+	padding: 0px;
+	width: 100%;
+}
+
+.page-links ul {
+	text-align: left;
+}
+
+.page-links li {
+	width: 100%;
+	border-style: none;
+}
+
+.page-links li a {
+	color: white;
+	text-decoration: none;
+}
+
+/* FORM CONTAINERS & ELEMENTS OVERRIDE */
+.form-search * {
+	float: left;
+	margin: 3px;
+}
+
+.form-table input[type=radio] {
+	display: none;
+}
+
+.form-table input[type=radio]:checked+label {
+	color: black;
+	background-color: #c3e3c5;
+	transition: 0.3s;
+}
+
+.form-result tbody a {
+	color: white;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Find your seats</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/utils.css" />
+<link rel="stylesheet" href="/css/seller.css" />
+<link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+<body>
+	<!-- WRAPPER -->
+	<div class="wrapper">
+		<!-- PAGE HEADER -->
+		<header>
+			<th:block th:include="/common/_header-seller"></th:block>
+		</header>
+		<!-- PAGE NAVIGATION -->
+		<nav>
+			<th:block th:include="/common/_nav-seller"></th:block>
+		</nav>
+		<!-- PAGE CONTAINER -->
+		<div class="page-container parallax">
+			<!-- HEADER -->
+			<section class="page-banner">
+				<div class="page-header">
+					<h1 th:text="${bus.busName} + ', ' + ${date}"></h1>
+				</div>
+			</section>
+			<!-- PAGE CONTENT -->
+			<section class="page-content">
+				<form
+					th:action="@{/filter-tickets/{id}/{date}(id= ${bus.getId()}, date=${date})}">
+					<input type="hidden" value="${date}" name="date">
+					<section>
+						<div class="form-search">
+							<select name="filter" id="filter" th:name="filter">
+								<option disabled>Filter by...</option>
+								<option value="Available tickets"
+									th:selected="${filterValue} == 'Available tickets'">Available
+									tickets</option>
+								<option value="Unvailable tickets"
+									th:selected="${filterValue} == 'Unvailable tickets'">Unavailable
+									tickets</option>
+							</select>
+							<button type="submit">Filter</button>
+						</div>
+					</section>
+					<section>
+						<table>
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Price</th>
+									<th>Booking status</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="ticket : ${listSeat}">
+									<td th:text="${ticket.key}"></td>
+									<td th:text="${bus.getPrice()}"></td>
+									<td th:if="${ticket.value}" th:text="Available"></td>
+									<td th:unless="${ticket.value}" th:text="Unavailable"></td>
+									<td th:if="${ticket.value}">
+										<input type="checkbox" disabled name="checkTicket"
+											th:value="${ticket.key}">
+									</td>
+									<td th:unless="${ticket.value}">
+										<input type="checkbox" checked="checked" disabled>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</form>
+			</section>
+		</div>
+		<!-- PAGE ALERTS -->
+		<div class="page-alert"></div>
+		<!-- PAGE FOOTER -->
+		<footer>
+			<th:block th:include="/common/_footer"></th:block>
+		</footer>
+	</div>
+</body>
+</html>

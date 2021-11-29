@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="5; url=/index" />
+<title>Find your trips</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/utils.css" />
+<link rel="stylesheet" href="/css/redirect.css" />
+</head>
+<body>
+	<!-- WRAPPER -->
+	<div class="wrapper">
+		<!-- PAGE CONTAINER -->
+		<div class="page-container">
+			<!-- PAGE CONTENT -->
+			<section class="page-content">
+				<div class="redirect-message">
+					<p>Booking successful. Redirecting to home page in 5 seconds...</p>
+					<p>
+						Click <a th:href="@{/index}"> here</a> if you are not redirected
+						automatically.
+					</p>
+				</div>
+			</section>
+		</div>
+		<!-- PAGE ALERTS -->
+		<div class="page-alert"></div>
+	</div>
+</body>
+</html>

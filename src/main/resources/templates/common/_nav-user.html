@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<!-- NAV LINKS -->
+<ul th:if="${currentUser}">
+	<li><a th:href="@{/user-dashboard}">Book a trip</a></li>
+	<li><a th:href="@{/about-us}">About us</a></li>
+</ul>
+<ul th:if="${currentUser == null}">
+	<li><a th:href="@{/index}">Home</a></li>
+	<li><a th:href="@{/about-us}">About us</a></li>
+</ul>
+</html>

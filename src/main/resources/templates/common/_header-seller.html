@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<!-- HEADER LOGO -->
+<div class="float-left">
+	<ul>
+		<li><a th:href="@{/index}">VIETBUS AIR</a></li>
+	</ul>
+</div>
+<!-- HEADER SESSION -->
+<div class="float-right" th:if="${currentUser}">
+	<ul>
+		<li class="dropdown-button"><a
+			th:utext="'Welcome, ' + ${currentUser.firstname} + '!'"></a>
+			<ul class="dropdown-content">
+				<li><a th:href="@{/seller-dashboard}">View dashboard</a></li>
+				<li><a th:href="@{/logout}">Sign out</a></li>
+			</ul></li>
+	</ul>
+</div>
+<div class="float-right" th:if="${currentUser == null}">
+	<ul>
+		<li><a th:href="@{/login}">Sign In</a></li>
+	</ul>
+</div>
+</html>

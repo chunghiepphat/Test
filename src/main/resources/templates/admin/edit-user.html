@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ADMIN DASHBOARD</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/utils.css" />
+<link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+	<!-- WRAPPER -->
+	<div class="wrapper">
+		<!-- PAGE HEADER -->
+		<header>
+			<th:block th:include="/common/_header-admin"></th:block>
+		</header>
+		<!-- SIDEBAR AND CONTENT WRAPPER -->
+		<div class="page-wrapper">
+			<!-- PAGE NAVIGATION -->
+			<nav>
+				<th:block th:include="/common/_nav-admin"></th:block>
+			</nav>
+			<!-- PAGE CONTAINER -->
+			<div class="page-container">
+				<!-- PAGE HEADER -->
+				<section class="page-header">
+					<h1 th:text="'EDITING ACCOUNT ' + ${user.email} +'...'"></h1>
+				</section>
+				<!-- PAGE CONTENT -->
+				<section class="page-content">
+					<!-- PAGE LINKS -->
+					<section class="page-links">
+						<ul>
+							<li>
+								<a href="javascript:history.back()">&#8592; Go Back</a>
+							</li>
+						</ul>
+					</section>
+					<!-- USER FORM -->
+					<section>
+						<form th:action="@{/save-changes-to-user}" th:object="${user}"
+							method="POST">
+							<table class="form-table">
+								<tr>
+									<td class="text-align-left">User ID:</td>
+									<td>
+										<input type="text" th:field="*{id}" readonly>
+									</td>
+								</tr>
+								<tr>
+									<td class="text-align-left">First name:</td>
+									<td>
+										<input type="text" th:field="*{firstname}">
+									</td>
+								</tr>
+								<tr>
+									<td class="text-align-left">Last name:</td>
+									<td>
+										<input type="text" th:field="*{lastname}">
+									</td>
+								</tr>
+								<tr>
+									<td class="text-align-left">Registered email:</td>
+									<td>
+										<input type="email" th:field="*{email}" readonly>
+									</td>
+								</tr>
+								<tr>
+									<td class="text-align-left">Active status:</td>
+									<td>
+										<input type="text" th:field="*{active}" readonly>
+									</td>
+								</tr>
+								<tr>
+									<td class="text-align-left">Active role:</td>
+									<td>
+										<input id="customer" type="radio" value="customer"
+											th:name="roleRadio" th:checked="${isCustomer}">
+										<label class="width-50pc" for="customer"> Customer </label>
+										<input id="seller" type="radio" value="seller"
+											th:name="roleRadio" th:checked="${isSeller}">
+										<label class="width-50pc" for="seller"> Seller </label>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>
+										<button type="submit">SAVE CHANGES</button>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</section>
+				</section>
+			</div>
+		</div>
+		<!-- PAGE ALERTS -->
+		<div class="page-alert">
+			<div class="page-alert-msg" role="alert" th:if="${msg}"
+				th:utext="${msg}"></div>
+		</div>
+		<!-- PAGE FOOTER -->
+		<footer> </footer>
+	</div>
+</body>
+</html>

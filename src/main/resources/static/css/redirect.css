@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.page-container {
+	height: 100vh;
+}
+
+.page-content {
+	height: 100%;
+}
+
+.redirect-message {
+	float: none;
+	margin: 300px auto auto auto;
+	width: 60%;
+	font-size: 20px;
+}
+
+.redirect-message p {
+	text-align: center;
+}
